@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # coding: utf-8
 
 import urllib.request
@@ -14,7 +15,7 @@ post_param = []
 _k = yaml.load(open('key.yaml').read())
 api_key = _k['api_key']
 api_secret = _k['api_secret']
-def(_k)
+
 
 def private_api(func):
     def decorated(*args, **kwargs):
@@ -33,10 +34,14 @@ def private_api(func):
 
 
 def make_header(post_param):
-    digester = hmac.new(api_secret.encode('utf-8'), digestmod = hashlib.sha512)
+    digester = hmac.new(api_secret.encode('utf-8'), digestmod=hashlib.sha512)
     digester.update(post_param)
     return {'Key': api_key,
             'Sign': digester.hexdigest()}
+
+
+def make_nonce():
+    return str(round(time.time() * 10) % 1000000000).encode('utf-8')
 
 
 @private_api
@@ -126,10 +131,6 @@ order   No  ソート順    ASC (昇順)もしくは DESC (降順)  DESC
 since   No  開始タイムスタンプ   UNIX time   0
 end No  終了タイムスタンプ   UNIX time   infinity
 '''
-
-
-def make_nonce():
-    return str(round(time.time()*100)%1000000007).encode('utf-8')
 
 
 '''
