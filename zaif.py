@@ -5,22 +5,49 @@ import json
 
 PUBLIC_ENDPOINT = 'https://api.zaif.jp/api/1'
 
+def public_api(func):
+    def decorated(*args, **kwargs):
+        if 'from_' in kwargs.keys():
+            kwargs['from'] = kwargs['from_']
+            del(kwargs['from_'])
+        if len(args) > 0:
+            param = args[0]
+        else:
+            param = list(kwargs.values())[0]
+        return get_json(PUBLIC_ENDPOINT + '/' + func.__name__ + '/' + param)
+    return decorated
+
+@public_api
+def currencies(currency='all'):
+    pass
+
+
+@public_api
+def currency_pairs(currency_pair='all'):
+    pass
+
+
+@public_api
 def last_price(currency_pair='btc_jpy'):
-    return get_json(PUBLIC_ENDPOINT + '/last_price/' + currency_pair)
+    pass
 
 
+@public_api
 def ticker(currency_pair='btc_jpy'):
-    return get_json(PUBLIC_ENDPOINT + '/ticker/' + currency_pair)
+    pass
 
 
+@public_api
 def trades(currency_pair='btc_jpy'):
-    return get_json(PUBLIC_ENDPOINT + '/trades/' + currency_pair)
+    pass
 
 
+@public_api
 def depth(currency_pair='btc_jpy'):
-    return get_json(PUBLIC_ENDPOINT + '/trades/' + currency_pair)
+    pass
 
 
+@public_api
 def get_json(url):
     return json.loads(urllib.request.urlopen(url).read().decode('utf-8'))
 

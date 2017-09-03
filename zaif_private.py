@@ -41,11 +41,26 @@ def make_header(post_param):
 
 
 def make_nonce():
-    return str(round(time.time() * 10) % 1000000000).encode('utf-8')
+    return str(round(time.time() * 5) % 1000000000).encode('utf-8')
 
 
 @private_api
 def get_info():
+    pass
+
+
+@private_api
+def get_info2():
+    pass
+
+
+@private_api
+def get_personal_info():
+    pass
+
+
+@private_api
+def get_id_info():
     pass
 
 
