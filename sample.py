@@ -11,7 +11,7 @@ print(my_info)
 time.sleep(0.1)
 
 # get last trade price
-last_price = zaif.last_price()
+last_price = zaif.last_price('btc_jpy')
 time.sleep(0.1)
 
 # get my trade history
@@ -29,12 +29,11 @@ def envalid_amount(fund, price):
     return (fund / price) - (fund / price) % 0.0001
 
 # buy-order BTC with JPY at a harf of last price
-print(harf_int(last_price['last_price']))
 print(envalid_amount(my_info['return']['funds']['jpy'], harf_int(last_price['last_price'])))
 trade_return = zp.trade(currency_pair='btc_jpy',
                         action='bid',
-                        price=harf_int(last_price['last_price']),
-                        amount=envalid_amount(my_info['return']['funds']['jpy'], harf_int(last_price['last_price'])))
+                        price=int(last_price['last_price']),
+                        amount=0.0001)
 print(trade_return)
 time.sleep(0.1)
 
