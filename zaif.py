@@ -1,7 +1,8 @@
 # coding: utf-8
 
 import urllib.request
-import json
+
+from zaifutil import get_json
 
 PUBLIC_ENDPOINT = 'https://api.zaif.jp/api/1'
 
@@ -12,8 +13,11 @@ def public_api(func):
             del(kwargs['from_'])
         if len(args) > 0:
             param = args[0]
-        else:
+        elif len(kwargs) > 0:
             param = list(kwargs.values())[0]
+        else:
+            raise Exception()
+        print(func.__name__, param)
         return get_json(PUBLIC_ENDPOINT + '/' + func.__name__ + '/' + param)
     return decorated
 
@@ -46,10 +50,6 @@ def trades(currency_pair='btc_jpy'):
 def depth(currency_pair='btc_jpy'):
     pass
 
-
-@public_api
-def get_json(url):
-    return json.loads(urllib.request.urlopen(url).read().decode('utf-8'))
 
 '''
     last_price : 終値を得る
