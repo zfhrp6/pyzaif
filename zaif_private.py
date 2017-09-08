@@ -66,86 +66,86 @@ def get_id_info():
 
 @private_api
 def trade_history(from_=0, count=1000, from_id=0, end_id='infinity', order='DESC', since=0, end='infinity', currency_pair=None):
+    '''
+    from    No  この順番のレコードから取得   numerical   0
+    count   No  取得するレコード数   numerical   1000
+    from_id No  このトランザクションIDのレコードから取得   numerical   0
+    end_id  No  このトランザクションIDのレコードまで取得   numerical   infinity
+    order   No  ソート順    ASC (昇順)もしくは DESC (降順)  DESC
+    since   No  開始タイムスタンプ   UNIX time   0
+    end No  終了タイムスタンプ   UNIX time   infinity
+    currency_pair   No  通貨ペア。指定なしで全ての通貨ペア   (例) btc_jpy 全ペア
+    '''
     pass
-'''
-from    No  この順番のレコードから取得   numerical   0
-count   No  取得するレコード数   numerical   1000
-from_id No  このトランザクションIDのレコードから取得   numerical   0
-end_id  No  このトランザクションIDのレコードまで取得   numerical   infinity
-order   No  ソート順    ASC (昇順)もしくは DESC (降順)  DESC
-since   No  開始タイムスタンプ   UNIX time   0
-end No  終了タイムスタンプ   UNIX time   infinity
-currency_pair   No  通貨ペア。指定なしで全ての通貨ペア   (例) btc_jpy 全ペア
-'''
 
 
 @private_api
 def active_orders(currency_pair=None):
+    '''
+    currency_pair   No  取得する通貨ペア。指定なしで全ての通貨ペア   (例) btc_jpy 全てのペア
+    '''
     pass
-'''
-currency_pair   No  取得する通貨ペア。指定なしで全ての通貨ペア   (例) btc_jpy 全てのペア
-'''
 
 
 @private_api
 def trade(currency_pair, action, price, amount, limit=None):
+    '''
+    currency_pair   Yes 発注する通貨ペア    (例) btc_jpy -
+    action  Yes 注文の種類   bid もしくは ask    -
+    price   Yes 指値注文価格  numerical   -
+    amount  Yes 数量(例: 0.3)  numerical   -
+    limit   No  リミット注文価格    numerical
+    '''
     pass
-'''
-currency_pair   Yes 発注する通貨ペア    (例) btc_jpy -
-action  Yes 注文の種類   bid もしくは ask    -
-price   Yes 指値注文価格  numerical   -
-amount  Yes 数量(例: 0.3)  numerical   -
-limit   No  リミット注文価格    numerical
-'''
 
 
 @private_api
-def cancel_order(order_id):
+def cancel_order(*, order_id):
+    '''
+    order_id    Yes 注文ID（tradeまたはactive_ordersで取得できます）  numerical   -
+    '''
     pass
-'''
-order_id    Yes 注文ID（tradeまたはactive_ordersで取得できます）  numerical   -
-'''
 
 
 @private_api
 def withdraw(currency, address, amount, opt_fee=None):
+    '''
+    currency    Yes 引き出す通貨  btc もしくは mona   -
+    address Yes 送信先のアドレス    address string  -
+    amount  Yes 引き出す金額(例: 0.3)  numerical   -
+    opt_fee No  採掘者への手数料(例: 0.003)  numerical   -
+    '''
     pass
-'''
-currency    Yes 引き出す通貨  btc もしくは mona   -
-address Yes 送信先のアドレス    address string  -
-amount  Yes 引き出す金額(例: 0.3)  numerical   -
-opt_fee No  採掘者への手数料(例: 0.003)  numerical   -
-'''
 
 
 @private_api
 def deposit_history(currency, from_=0, count=0, from_id=0, end_id='infinity', order='DESC', since=0, end='infinity'):
+    '''
+    currency    Yes 通貨。jpy / btc / mona のいずれかを指定    TEXT
+    from    No  この順番のレコードから取得   numerical   0
+    count   No  取得するレコード数   numerical   1000
+    from_id No  この入金IDのレコードから取得 numerical   0
+    end_id  No  この入金IDのレコードまで取得 numerical   infinity
+    order   No  ソート順    ASC (昇順)もしくは DESC (降順)  DESC
+    since   No  開始タイムスタンプ   UNIX time   0
+    end No  終了タイムスタンプ   UNIX time   infinity
+    '''
     pass
-'''
-currency    Yes 通貨。jpy / btc / mona のいずれかを指定    TEXT
-from    No  この順番のレコードから取得   numerical   0
-count   No  取得するレコード数   numerical   1000
-from_id No  この入金IDのレコードから取得 numerical   0
-end_id  No  この入金IDのレコードまで取得 numerical   infinity
-order   No  ソート順    ASC (昇順)もしくは DESC (降順)  DESC
-since   No  開始タイムスタンプ   UNIX time   0
-end No  終了タイムスタンプ   UNIX time   infinity
-'''
 
 
 @private_api
 def withdraw_history(currency, from_=0, count=1000, from_id=0, end_id='infinity', order='DESC', since=0, end='infinity'):
+    '''
+    currency    Yes 通貨。jpy / btc / mona のいずれかを指定    TEXT
+    from    No  この順番のレコードから取得   numerical   0
+    count   No  取得するレコード数   numerical   1000
+    from_id No  この出金IDのレコードから取得 numerical   0
+    end_id  No  この出金IDのレコードまで取得 numerical   infinity
+    order   No  ソート順    ASC (昇順)もしくは DESC (降順)  DESC
+    since   No  開始タイムスタンプ   UNIX time   0
+    end No  終了タイムスタンプ   UNIX time   infinity
+    '''
     pass
-'''
-currency    Yes 通貨。jpy / btc / mona のいずれかを指定    TEXT
-from    No  この順番のレコードから取得   numerical   0
-count   No  取得するレコード数   numerical   1000
-from_id No  この出金IDのレコードから取得 numerical   0
-end_id  No  この出金IDのレコードまで取得 numerical   infinity
-order   No  ソート順    ASC (昇順)もしくは DESC (降順)  DESC
-since   No  開始タイムスタンプ   UNIX time   0
-end No  終了タイムスタンプ   UNIX time   infinity
-'''
 
 
 '''

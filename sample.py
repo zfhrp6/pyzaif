@@ -28,6 +28,7 @@ def envalid_amount(fund, price):
     ''' amount set to full of deposit JPY '''
     return (fund / price) - (fund / price) % 0.0001
 
+
 # buy-order BTC with JPY at a harf of last price
 print(envalid_amount(my_info['return']['funds']['jpy'], harf_int(last_price['last_price'])))
 trade_return = zp.trade(currency_pair='btc_jpy',

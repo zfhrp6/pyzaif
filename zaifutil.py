@@ -1,12 +1,11 @@
 # coding: utf-8
 
-import time
+# import time
 import urllib.request
 import urllib.parse
-import hmac
-import hashlib
+# import hmac
+# import hashlib
 import json
-
 
 
 def get_json(url):
